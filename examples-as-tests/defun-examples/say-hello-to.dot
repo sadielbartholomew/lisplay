@@ -1,0 +1,27 @@
+digraph D {
+  graph [fontsize=28];
+  node [fontsize=28];
+  edge[style=invisible arrowhead=none fontsize=28];
+  rankdir=LR;
+  subgraph cluster_p {
+    style=rounded;
+    penwidth=4;
+    graph [margin=20]
+    label = "defun say-hello-to";
+    subgraph cluster_c0 {
+      color=red;
+      label = "<defun parameters>";
+      1 [label="who" shape="doublecircle"];
+    }
+    subgraph cluster_c1 {
+      color=blue;
+      edge[style=invisible]
+      edge [arrowhead=none]
+      label = "format";
+      2 [label="nil" shape="plaintext"];
+      3 [label="\"Hello, ~a!\"" shape="parallelogram"];
+      4 [label="who" shape="circle"];
+      2 -> 3 -> 4;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+digraph D {
+  graph [fontsize=28];
+  node [fontsize=28];
+  edge[style=invisible arrowhead=none fontsize=28];
+  rankdir=LR;
+  subgraph cluster_p {
+    style=rounded;
+    penwidth=4;
+    graph [margin=20]
+    label = "defun same-sign";
+    subgraph cluster_c0 {
+      color=red;
+      label = "<defun parameters>";
+      1 [label="x" shape="doublecircle"];
+      2 [label="y" shape="doublecircle"];
+      1 -> 2;
+    }
+    subgraph cluster_c1 {
+      color=blue;
+      rankdir=LR;
+      edge[style=invisible]
+      edge [arrowhead=none]
+      label = "or";
+      3 -> 4;
+      subgraph cluster_gc_1 {
+        color=green;
+        label = "and";
+        subgraph cluster_gc1_1 {
+          color=orange;
+          label = "zerop";
+          3 [label="x" shape="circle"];
+          3;
+        }
+        subgraph cluster_gc1_2 {
+          color=orange;
+          label = "zerop";
+          4 [label="y" shape="circle"];
+          4;
+        }
+      }
+      subgraph cluster_gc_2 {
+        color=green;
+        edge[style=invisible]
+        edge[arrowhead=none]
+        label = "and"
+        subgraph cluster_gc2_1 {
+          color=orange;
+          edge[style=invisible]
+          edge[arrowhead=none]
+          label = "<";
+          5 [label="x" shape="circle"];
+          6 [label="0" shape="plaintext"];
+          5 -> 6;
+        }
+        subgraph cluster_gc2_2 {
+          color=orange;
+          edge[style=invisible]
+          edge[arrowhead=none]
+          label = "<";
+          7 [label="y" shape="circle"];
+          8 [label="0" shape="plaintext"];
+          7 -> 8;
+        }
+      }
+      subgraph cluster_gc_3 {
+        color=green;
+        edge[style=invisible]
+        edge[arrowhead=none]
+        label = "and";
+        subgraph cluster_gc3_1 {
+          color=orange;
+          edge[style=invisible]
+          edge[arrowhead=none]
+          label = ">";
+          9 [label="x" shape="circle"];
+          10 [label="0" shape="plaintext"];
+          9 -> 10;
+        }
+        subgraph cluster_gc3_2 {
+          color=orange;
+          edge[style=invisible]
+          edge[arrowhead=none]
+          label = ">";
+          11 [label="y" shape="circle"];
+          12 [label="0" shape="plaintext"];
+          11 -> 12;
+        }
+      }
+    }
+  }
+}

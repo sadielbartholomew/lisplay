@@ -1,0 +1,45 @@
+digraph D {
+  graph [fontsize=28];
+  node [fontsize=28];
+  edge[style=invisible arrowhead=none fontsize=28];
+  rankdir=LR;
+  subgraph cluster_p {
+    style=rounded;
+    penwidth=4;
+    graph [margin=20]
+    label = "defun hypotenuse-length";
+    subgraph cluster_c0 {
+      color=red;
+      label = "<defun parameters>";
+      1 [label="a" shape="doublecircle"];
+      2 [label="b" shape="doublecircle"];
+      1 -> 2;
+    }
+    subgraph cluster_c1 {
+      color=blue;
+      rankdir=LR;
+      edge[style=invisible]
+      edge [arrowhead=none]
+      label = "sqrt";
+      3 -> 4;
+      subgraph cluster_gc_1 {
+        color=green;
+        label = "+";
+        subgraph cluster_gc1_1 {
+          color=orange;
+          label = "*";
+          3 [label="a" shape="circle"];
+          4 [label="a" shape="circle"];
+          3 -> 4;
+        }
+        subgraph cluster_gc1_2 {
+          color=orange;
+          label = "*";
+          5 [label="b" shape="circle"];
+          6 [label="b" shape="circle"];
+          5 -> 6;
+        }
+      }
+    }
+  }
+}
